@@ -2,7 +2,6 @@
 // which is as follows:
 // 1.))Multiply every other digit by 2, starting with the number’s second-to-last digit,
 // and then add those products' digits together.
-
 //2.))Add the sum to the sum of the digits that weren’t multiplied by 2.
 
 //3.))If the total’s last digit is 0 (or, put more formally, if the total modulo 10 is congruent to 0),
@@ -10,6 +9,7 @@
 
 #include<stdio.h>
 #include<cs50.h>
+#include<ctype.h>
 int main(void)
 {
     long long cr_num=0,k,j=0,i=0,l=0;
@@ -17,9 +17,8 @@ int main(void)
     printf("Enter credit card number\n");
      do
     {
-
        scanf("%lld",&cr_num);
-    }while(cr_num<0);
+    }while(cr_num<0 && sizeof(cr_num)>4);
 
     {
     j=cr_num;
@@ -66,6 +65,7 @@ int main(void)
         cr_num=cr_num/10;
         count++;
     }
+    return 0;
     //validations for various credit cards
     if((((i/10000000000000==34))||(i/10000000000000==37))&&(count==15))
     printf("AMEX\n");
@@ -75,6 +75,7 @@ int main(void)
     if((((count==13)||count==16))&&((i/1000000000000000==4)||(i/1000000000000==4)))
     printf("VISA\n");
     }
+
 
 }
 }
